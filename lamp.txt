@@ -1,0 +1,28 @@
+sudo apt update; sudo apt full-upgrade
+
+nano lamp
+
+
+#!/bin/bash
+
+sudo apt install lamp-server^
+
+sudo apt install php libapache2-mod-php php-mysql php-cgi php-gd php-zip php-xml php-xmlrpc php-curl php-json php-mbstring php-cli
+
+sudo ufw allow in 80/tcp
+
+sudo a2enmod rewrite; sudo sed -i "s/AllowOverride None/AllowOverride All/" /etc/apache2/apache2.conf; sudo systemctl restart apache2
+
+sudo wget -c http://wordpress.org/latest.tar.gz
+
+sudo tar -xzvf latest.tar.gz
+
+sudo rsync -av wordpress/* /var/www/html
+
+sudo chown -R www-data:www-data /var/www/html
+
+sudo chmod -R 755 /var/www/html
+
+sudo rm /var/www/html/index.html
+
+exit

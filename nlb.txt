@@ -1,0 +1,25 @@
+sudo apt update; sudo apt full-upgrade
+
+nano nginx
+
+#!/bin/bash
+sudo apt-get install nginx
+sudo vim /etc/nginx/sites-available/default
+
+## закоментувати всі команди і добавити:
+## upstream backend {
+## server 192.168.0.1;
+## server 192.168.0.2;
+##                 }
+## server {
+## listen 80;
+## location / {
+## proxy_pass http://backend;
+##         }
+##            }
+
+sudo systemctl restrt nginx
+
+exit
+
+

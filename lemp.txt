@@ -1,0 +1,32 @@
+sudo apt update; sudo apt full-upgrade
+
+nano lemp
+
+
+#!/bin/bash
+sudo apt-get install nginx
+
+sudo apt-get install php7.4-fpm
+
+##sudo nano /etc/nginx/sites-available/default - змінити файл
+## добавити index.php , розкоментувати строки про php
+
+sudo /etc/init.d/nginx restart
+
+sudo apt-get install mysql-server
+
+cd /var/www/html/
+
+sudo wget https://wordpress.org/latest.tar.gz
+
+sudo tar xvfz latest.tar.gz
+
+##sudo nano /etc/nginx/sites-available/default - змінити файл;
+##root /var/www/html/wordpress/; - добавити wordpress;
+
+sudo /etc/init.d/nginx restart
+
+sudo chown -R www-data /var/www/html/wordpress
+
+
+exit
